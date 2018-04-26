@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pl-PL" ng-app="application" ng-controller="controller">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker3.css" />
+    <script src="app.js"></script>
+	<style>
+        .carousel-inner img {
+            margin: auto;
+        }
+        
+        .table-fit td {
+            width: 50%;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" ng-cloak>
+        <ul class="nav nav-tabs nav-justified">
+            <li class="active"><a data-toggle="tab" href="#galleryPage">{{gallery}}</a></li>
+            <li><a data-toggle="tab" href="#bookingPage">{{booking}}</a></li>
+            <li><a data-toggle="tab" href="#calendarPage">{{calendar}}</a></li>
+            <li class="text-center">
+                <a ng-click="changeLanguage(anotherLanguage )"><img ng-src="images/{{ languageSelector }}" width="32px" height="20px"></a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div id="galleryPage" class="tab-pane fade in active">
+                <span class="lang-lg" lang="is"></span>
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                        <li data-target="#myCarousel" data-slide-to="3"></li>
+                        <li data-target="#myCarousel" data-slide-to="4"></li>
+                        <li data-target="#myCarousel" data-slide-to="5"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="images/1.jpg" class="img-responsive" alt="kuchnia">
+                            <div class="carousel-caption">
+                                <h3>{{kitchen}}</h3>
+                                <p>{{fullEq}}</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="images/2.jpg" class="img-responsive" alt="pokój">
+                            <div class="carousel-caption">
+                                <h3>{{room1}}</h3>
+                                <p>{{twoSingleBeds}}</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="images/3.jpg" class="img-responsive" alt="pokój">
+                            <div class="carousel-caption">
+                                <h3>{{room2}}</h3>
+                                <p>{{sofa}}</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="images/4.jpg" class="img-responsive" alt="pokój">
+                            <div class="carousel-caption">
+                                <h3>{{room2}}</h3>
+                                <p>{{sofa}}</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="images/5.jpg" class="img-responsive" alt="pokój">
+                            <div class="carousel-caption">
+                                <h3>{{room2}}</h3>
+                                <p>{{sofa}}</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="images/6.jpg" class="img-responsive" alt="pokój">
+                            <div class="carousel-caption">
+                                <h3>{{kitchen}}</h3>
+                                <p>{{fullEq}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <div id="bookingPage" class="tab-pane fade">
+                <div class="container">
+                    <span class="col-sm-2"></span>
+                    <h3 class="col-sm-10 text-center">{{bookingEnquiry}}</h3>
+                    <form class="form-horizontal" name="formularz" id="formularz" ng-model="formularz">
+                        <div class="form-group has-feedback">
+                            <label class="control-label col-sm-2" for="nameInput">{{ name }}: </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="nameInput" placeholder="{{typeName}}" ng-model="nameInput" name="nameInput" ng-required="true">
+                                <span ng-show="formularz.nameInput.$valid" class="glyphicon glyphicon-ok text-success form-control-feedback"></span>
+                                <span ng-show="formularz.nameInput.$invalid" class="glyphicon glyphicon-warning-sign text-danger form-control-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="control-label col-sm-2" for="surnameInput">
+                                {{ surname }}: </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control has-error" id="surnameInput" placeholder="{{typeSurname}}" ng-model="surnameInput" name="surnameInput" ng-required="true">
+                                <span ng-show="formularz.surnameInput.$valid" class="glyphicon glyphicon-ok text-success form-control-feedback"></span>
+                                <span ng-show="formularz.surnameInput.$invalid" class="glyphicon glyphicon-warning-sign text-danger form-control-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label id="emailLabel" class="control-label col-sm-2" for="emailInput"> Email: </label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="emailInput" placeholder="{{typeEmail}}" ng-model="emailInput" name="emailInput" ng-required="true" ng-pattern="patternEmail">
+                                <span ng-show="formularz.emailInput.$valid" class="glyphicon glyphicon-ok text-success form-control-feedback"></span>
+                                <span ng-show="formularz.emailInput.$invalid" class="glyphicon glyphicon-warning-sign text-danger form-control-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label id="telefonLabel" class="control-label col-sm-2" for="telephoneInput"> {{telephone}}: </label>
+                            <div class="col-sm-10">
+                                <input type="tel" class="form-control bfh-phone" id="telephoneInput" placeholder="{{typeTelephone}}" ng-model="telephoneInput" name="telephoneInput" ng-pattern="patternTelephone" ng-required="true">
+                                <span ng-show="formularz.telephoneInput.$valid" class="glyphicon glyphicon-ok text-success form-control-feedback"></span>
+                                <span ng-show="formularz.telephoneInput.$invalid" class="glyphicon glyphicon-warning-sign text-danger form-control-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <label class="col-sm-2 checkbox" ng-show="formularz.nameInput.$valid && formularz.surnameInput.$valid && formularz.emailInput.$valid && formularz.telephoneInput.$valid">
+                                    <input type="checkbox" ng-model="saveCheckbox" ng-checked="userDataAvailable()">{{saveMyUserData}}</label>
+
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="control-label col-sm-2" for="arrivalInput"> {{arrivalDate}}: </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control datepicker" id="arrivalInput" name="arrivalInput" ng-model="arrivalInput" placeholder="{{chooseArrival}}" ng-required="true">
+                                <span ng-show="formularz.arrivalInput.$valid" class="glyphicon glyphicon-ok text-success form-control-feedback"></span>
+                                <span ng-show="formularz.arrivalInput.$invalid" class="glyphicon glyphicon-warning-sign text-danger form-control-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="control-label col-sm-2" for="departueInput"> {{departueDate}}: </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control datepicker" id="departueInput" placeholder="{{chooseDepartue}}" ng-model="departueInput" name="departueInput" ng-required="true">
+                                <span ng-show="formularz.departueInput.$valid" class="glyphicon glyphicon-ok text-success form-control-feedback"></span>
+                                <span ng-show="formularz.departueInput.$invalid" class="glyphicon glyphicon-warning-sign text-danger form-control-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="form-group" id="nightsInput" name="nightsInput" ng-model="nightsInput" ng-show="formularz.arrivalInput.$valid && formularz.departueInput.$valid">
+                            <label class="control-label col-sm-2" for="departueInput"> </label>
+                            <div class="col-sm-9 text-center text-info text-lg">
+                                {{numberOfNights}}: {{countNights()}}</mark>
+                            </div>
+                            <div class="col-sm-1 text-center"></div>
+                        </div>
+                        <div class="form-group" ng-show="formularz.arrivalInput.$valid && formularz.departueInput.$valid">
+                            <label class="control-label col-sm-2" for="adultsSelect">{{numberOfAdults}}:</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="adultsSelect" ng-model="adultsSelect" ng-selected="1" ng-options="x for x in adultsList">
+                                </select>
+                            </div>
+                            <div class="col-sm-1 hidden-xs label label-success" ng-show="pricelistAvailable() && countAdults()">
+                                = {{ countAdults()}}zł
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="formularz.arrivalInput.$valid && formularz.departueInput.$valid">
+                            <label class="control-label col-sm-2" for="babiesSelect">{{numberOfBabies}}:</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="babiesSelect" ng-model="babiesSelect" name="babiesSelect" ng-options="x for x in babiesList">
+                                </select>
+                            </div>
+                            <div class="col-sm-1 hidden-xs label label-success" ng-show="pricelistAvailable() && countBabies()">
+                                = {{ countBabies()}}zł
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="formularz.arrivalInput.$valid && formularz.departueInput.$valid">
+                            <label class="control-label col-sm-2" for="babiesSelect">{{additionalOptions}}:</label>
+                            <div class="col-sm-9">
+                                <label class="col-sm-2 checkbox">
+                                    <input type="checkbox" ng-model="trainChechbox">{{transportFromTrain}}</label>
+                                <label class="col-sm-2  checkbox">
+                                    <input type="checkbox" ng-model="airCheckbox">{{transportFromAir}}</label>
+                                <label class="col-sm-2  checkbox">
+                                    <input type="checkbox" ng-model="dogCheckbox">{{dog}}</label>
+                                <label class="col-sm-2  checkbox">
+                                    <input type="checkbox" ng-model="cleaningCheckbox">{{cleaning}}</label>
+                            </div>
+                            <div class="col-sm-1 hidden-xs label label-success" ng-show="pricelistAvailable() && countAdditional()">= {{ countAdditional() }}zł</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10 text-center" ng-show="pricelistAvailable() && formularz.arrivalInput.$valid && formularz.departueInput.$valid">
+                                <p>
+                                    <h3 class="text-success">	{{totalPrice}}: {{ countTotalPrice() }}zł</h3>
+                                </p>
+                                <p>{{pricesFrom}}: {{ pricelistDate }} </p>
+                            </div>
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="download" class="btn btn-block  btn-success" ng-show="formularz.arrivalInput.$valid && formularz.departueInput.$valid" ng-model="download" ng-click="getPrices()" name="download"> {{downloadCurrentPrices}}</button>
+                                <button type="submit" id="send" href="#thanxPage" data-toggle="tab" class="btn btn-block btn-primary" ng-disabled="formularz.$invalid" ng-model="send" ng-click="sendQuery()" name="send"> {{sendEnquiry}} </button>
+                                <button type="button" id="resetButton" href="" data-toggle="tab" class="btn btn-block" ng-model="resetButton" ng-click="reset()" name="resetButton"> {{formReset}}</button>
+                                <button type="button" ng-show="userDataAvailable()" id="removeButton" class="btn btn-block" ng-model="removeButton" ng-click="removeUserData(); reset()" name="removeButton"> {{removeMyData}} </button>
+
+                            </div>
+                        </div>
+                    </form>
+                    <table>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div id="thanxPage" class="tab-pane fade in">
+                <h3 class="text-center">{{thankYou}}</h3>
+                <p class="text-center">{{enqSent}}</p>
+                <div class="col-sm-8 col-sm-offset-2">
+                    <table class="table-fit table table-striped table-hover">
+                        <tbody>
+                            <tr>
+                                <td>{{ name }}: </td>
+                                <td> {{nameInput }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ surname }}: </td>
+                                <td> {{ surnameInput }}</td>
+                            </tr>
+                            <tr>
+                                <td> Email: </td>
+                                <td> {{ emailInput }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ telephone }}: </td>
+                                <td> {{ telephoneInput }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ arrivalDate }}: </td>
+                                <td> {{ arrivalInput }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ departueDate }}: </td>
+                                <td> {{ departueInput }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ numberOfNights }}: </td>
+                                <td> {{ countNights() }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ numberOfAdults }}: </td>
+                                <td> {{ adultsSelect }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ numberOfBabies }}: </td>
+                                <td> {{ babiesSelect }}</td>
+                            </tr>
+                            <tr ng-show="countTotalPrice()">
+                                <td>{{ totalPrice }}: </td>
+                                <td> {{ countTotalPrice() }}zł</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button type="button" id="returnButton" class="btn btn-block  btn-info" ng-model="returnButton" data-toggle="tab" href="#bookingPage" ng-click="reset()" name="returnButton"> {{returnToBooking}} </button>
+                </div>
+            </div>
+            <div id="calendarPage" class="tab-pane fade in text-center">
+                <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;height=450&amp;wkst=2&amp;bgcolor=%23FFFFFF&amp;src=krakow.prokocim.mieszkanie%40gmail.com&amp;color=%23711616&amp;ctz=Europe%2FWarsaw" style="border-width:0" width="100%" height="450" frameborder="0" scrolling="no"></iframe>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
